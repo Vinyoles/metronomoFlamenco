@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compás y flamenco - Metronomo flamenco</title>
+
+    <!-- custom stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <!-- TODO -->
+    </header>
+
+    <section class="title">
+        <h1>Metrónomo flamenco - Beta</h1>
+    </section>
+    
+    <section class="reloj">
+        <div class="reloj__container">
+
+            <div id="BPMDisplay" class="reloj__BPM" onload="showBPM()"></div>
+            
+            <svg class="reloj__svg" viewBox="0 0 17153 17153" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <circle  cx="8576" cy="8576" r="8573"/>
+                <line x1="8576" y1="8577" x2="8576" y2="4626" class="reloj__manecilla"/>
+
+                <line class="hour-line" x1="8576" y1="1835" x2="8576" y2= "2978" />
+                <line class="hour-line" x1="5205" y1="2738" x2="5777" y2= "3728" />
+                <line class="hour-line" x1="2737" y1="5206" x2="3727" y2= "5777" />
+                <line class="hour-line" x1="1834" y1="8577" x2="2977" y2= "8577" />
+                <line class="hour-line" x1="2737" y1="11948" x2="3727" y2= "11376" />
+                <line class="hour-line" x1="5205" y1="14416" x2="5777" y2= "13426" />
+                <line class="hour-line" x1="8576" y1="15319" x2="8576" y2= "14176" />
+                <line class="hour-line" x1="11947" y1="14416" x2="11376" y2= "13426" />
+                <line class="hour-line" x1="14415" y1="11948" x2="13425" y2= "11376" />
+                <line class="hour-line" x1="15318" y1="8577" x2="14175" y2= "8577" />
+                <line class="hour-line" x1="14415" y1="5206" x2="13425" y2= "5777" />
+                <line class="hour-line" x1="11947" y1="2738" x2="11376" y2= "3728" />
+
+
+                <a onclick="changeAccentStatus(document.getElementById('reloj__numero12'))">
+                    <text x="7962" y="1196" id=reloj__numero12 class="reloj__numero acento">12</text>
+                </a>
+                <a onclick="changeAccentStatus(document.getElementById('reloj__numero1'))">
+                    <text x="12156" y="2231" id=reloj__numero1 class="reloj__numero">1</text>
+                </a>
+                <a onclick="changeAccentStatus(document.getElementById('reloj__numero2'))">
+                    <text x="15005" y="5078" id=reloj__numero2 class="reloj__numero">2</text>
+                </a>
+                <a onclick="changeAccentStatus(document.getElementById('reloj__numero3'))">
+                    <text x="16047" y="8954" id=reloj__numero3 class="reloj__numero acento">3</text>
+                </a>
+                <a onclick="changeAccentStatus(document.getElementById('reloj__numero4'))">
+                    <text x="15014" y="12836" id=reloj__numero4 class="reloj__numero">4</text>
+                </a>
+                <a onclick="changeAccentStatus(document.getElementById('reloj__numero5'))">
+                    <text x="12160" y="15672" id=reloj__numero5 class="reloj__numero">5</text>
+                </a>
+                <a onclick="changeAccentStatus(document.getElementById('reloj__numero6'))">
+                    <text x="8280" y="16718" id=reloj__numero6 class="reloj__numero acento">6</text>
+                </a>
+                <a onclick="changeAccentStatus(document.getElementById('reloj__numero7'))">
+                    <text x="4398" y="15678" id=reloj__numero7 class="reloj__numero">7</text>
+                </a>
+                <a onclick="changeAccentStatus(document.getElementById('reloj__numero8'))">
+                    <text x="1562" y="12836" id=reloj__numero8 class="reloj__numero acento">8</text>
+                </a>
+                <a onclick="changeAccentStatus(document.getElementById('reloj__numero9'))">
+                    <text x="526" y="8954" id=reloj__numero9 class="reloj__numero">9</text>
+                </a>
+                <a onclick="changeAccentStatus(document.getElementById('reloj__numero10'))">
+                    <text x="1237" y="5072" id=reloj__numero10 class="reloj__numero acento">10</text>
+                </a>
+                <a onclick="changeAccentStatus(document.getElementById('reloj__numero11'))">
+                    <text x="4136" y="2231" id=reloj__numero11 class="reloj__numero">11</text>
+                </a>
+
+                <circle class="reloj__centro" cx="8576" cy="8577" r="106"/>
+            </svg>
+        </div>
+
+        <div class="reloj-form">
+            <form class="reloj-form__container" onsubmit="updateBPM(); return false;">
+                <label for="BPM">BPM:</label>
+                <input type="number" value="200" id="form__bpm">
+                <br> <br>
+
+
+                <label class="switch">
+                    <input type="checkbox" id="form__active-sound" onclick="sound()">
+                    <span class="slider"></span>
+                </label>
+                <label for="soundActive">Activar sonido</label> 
+                <br> <br>
+
+                <label class="switch">
+                    <input type="checkbox" id="form__toggle-display" onclick="toggleHideShow()">
+                    <span class="slider"></span>
+                </label>
+                <label for="bpmIncrease">Incrementar BPM con el tiempo</label> 
+                <br> <br>
+
+
+                <div class="form__bpm-increase" id="toggleHideShow" style="display:none">
+                    <label for="interval">Que interval quieres entre incrementos?</label>
+                    <input type="number" value="5" id="form__interval">
+                    <br>
+
+                    <label for="increment">De cuantos BPM quieres el incremento</label>
+                    <input type="number" value="10" id="form__increment">
+                    <br>
+                </div>
+
+                <input type="submit" value="Aplicar cambios">
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer__copyright">
+            Copyright &copy;2022 Compás y Flamenco. Designed by <a href="https://www.vinyoles.com" target="_blank">Andreu Vinyoles</a>
+        </div>
+    </footer>
+
+
+    <script src="js/clockRotation.js"></script>
+    
+</body>
+</html>
