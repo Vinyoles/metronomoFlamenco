@@ -5,8 +5,8 @@ let intervalCounter = 0;
 let bpm = 200;
 let intervalIncrease = 0;
 let bpmIncrease = 0;
-const audioSoft = new Audio("/assets/audio/15389__pitx__palma-09.wav");
-const audioAccent = new Audio("/assets/audio/15388__pitx__palma-08.wav");
+const audioSoft = new Audio("https://vinyoles.com/dev/compas-y-flamenco/assets/audio/15389__pitx__palma-09.wav");
+const audioAccent = new Audio("https://vinyoles.com/dev/compas-y-flamenco/assets/audio/15388__pitx__palma-08.wav");
 
 
 //updates the metronome in loop
